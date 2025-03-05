@@ -48,7 +48,7 @@ resource "huaweicloud_cae_application" "application_create" {
 }
 
 output "application_info" {
-    value = huaweicloud_cae_applications.application_create.metadata.id
+    value = huaweicloud_cae_application.application_create.metadata.id
 }
 
 resource "huaweicloud_cae_domain" "domain_create" {
