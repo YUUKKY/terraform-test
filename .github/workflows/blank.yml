@@ -11,6 +11,10 @@ on:
 env:    
     HW_ACCESS_KEY: ${{ secrets.HW_ACCESS_KEY }}
     HW_SECRET_KEY: ${{ secrets.HW_SECRET_KEY }}
+    TF_VARS_HW_ACCESS_KEY: ${{ secrets.HW_ACCESS_KEY }}
+    TF_VARS_HW_SECRET_KEY: ${{ secrets.HW_SECRET_KEY }}
+    TF_LOG: DEBUG
+    TF_LOG_PATH: ${{ github.workspace }}/terraform.log
             
 jobs:
     Terraform-plan-apply:
