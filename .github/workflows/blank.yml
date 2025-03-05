@@ -3,10 +3,10 @@ name: tf-setup
 on:
     push:
         branches:
-            - master
+            - main
     pull_request:
         branches:
-            - master
+            - main
             
 jobs:
     Terraform-plan-apply:
