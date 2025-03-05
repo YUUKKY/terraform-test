@@ -7,6 +7,10 @@ on:
     pull_request:
         branches:
             - main
+
+env:    
+    HW_ACCESS_KEY: ${{ secrets.HW_ACCESS_KEY }}
+    HW_SECRET_KEY: ${{ secrets.HW_SECRET_KEY }}
             
 jobs:
     Terraform-plan-apply:
