@@ -66,7 +66,7 @@ resource "huaweicloud_cae_component" "component_create" {
   }
 
   dynamic "configurations" {
-    for_each = count.index == 0 ? local.configurations : []
+    for_each = local.configurations
     content {
       type = configurations.value.type
       data = configurations.value.data
