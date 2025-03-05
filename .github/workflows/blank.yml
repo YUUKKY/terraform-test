@@ -1,0 +1,41 @@
+name: tf-setup
+
+on:
+    push:
+        branches:
+            - Transit
+    pull_request:
+        branches:
+            - master
+            
+jobs:
+    Terraform-plan-apply:
+        runs-on: ubuntu-latest
+        steps:
+            - name: install-tfenv
+              run: git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
+
+            - name: make-tfenv-folder
+              run: mkdir -p ~/.local/bin/                           
+
+            - name: soft-linking
+              run: ln -s ~/.tfenv/bin/* ~/.local/bin    
+            
+            - name: install-terraform
+              run: tfenv install 1.10.3
+
+            - name: set-terraform-version
+              run: tfenv use 1.10.3
+
+            - name: checkout-tf-plans
+              uses: actions/checkout@v2            
+            
+            - name: tf-init
+              run: terraform init --backend-config="access_key=${{secrets.HW_ACCESS_KEY}}"  --backend-config="secret_key=${{secrets.HW_SECRET_KEY}}"
+
+            - name: tf-plan
+              run: terraform plan 
+
+            - name: tf-apply
+              run: terraform apply -auto-approve
+    
