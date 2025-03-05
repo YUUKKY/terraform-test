@@ -43,7 +43,6 @@ locals {
 
 resource "huaweicloud_cae_application" "application_create" {
   environment_id = "bf65121d-3bdd-49b0-9b0e-67b2381a2b86"
-  count = 1
   name = "terraform-test"
 }
 
