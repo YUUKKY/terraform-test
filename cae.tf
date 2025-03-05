@@ -1,4 +1,3 @@
-
 variable "cae-test" {default = "swr.me-east-1.myhuaweicloud.com/lw-demo/nginx:latest"}
 
 locals {  
