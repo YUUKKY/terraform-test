@@ -3,7 +3,7 @@ name: tf-setup
 on:
     push:
         branches:
-            - Transit
+            - master
     pull_request:
         branches:
             - master
