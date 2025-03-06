@@ -43,5 +43,11 @@ jobs:
               run: terraform plan 
 
             - name: tf-apply
-              run: terraform apply -auto-approve
+              run: terraform apply -auto-approv
+
+            - uses: actions/upload-artifact@v2
+              if: always()
+              with:
+                name: error.log
+                path: ${{ github.workspace }}/terraform.log
     
