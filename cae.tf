@@ -8,30 +8,26 @@ locals {
 	    "spec": {
           "items": [            
                {
-              "type": "Ingress", # layer 7 HTTP
+              "type": "LoadBalancer", # layer 7 HTTP
               "metadata": {
                 "annotations": {
-                  "kubernetes.io/elb.health-check-flag": "off",
+                  "kubernetes.io/elb.health-check-flag": "on",
                   "kubernetes.io/elb.lb-algorithm": "ROUND_ROBIN"
                 }
               },
-              "elb_id": "b8ae42cd-bcac-4913-87cb-542fc3dd6efe",
-              "ports" : [
-                {
-                  "target_port" : 8080,  # based on the port listening in the code
-                  "port" : 443, 
-                  "protocol" : "HTTPS",
-                  "default_certificate" : "pkcs8",
-                  "policy" : "tls-1-2-strict", 
-                  "paths" : [
-                    {
-                      "hostname" : "test.com",
-                      "path" : "/", # URL
-                      "url_match_mode" : "STARTS_WITH", # URL匹配规则
-                    }
-                  ]
-                }
-              ],
+              "elb_id": "defaultElbID",
+"ports": [
+        {
+         "operator": "",
+         "uid": "b04d7e6f-3e55-4578-b0ec-c67e8d193300",
+         "ip": "",
+         "name": "",
+         "target_port": 80,
+         "port": 80,
+         "protocol": "TCP",
+         "default_certificate": ""
+        }
+       ],
             }       
           ]
         }
@@ -41,20 +37,21 @@ locals {
 }
 
 
-resource "huaweicloud_cae_application" "application_create" {
-  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
-  name = "terraform-test"
-}
+#resource "huaweicloud_cae_application" "application_create" {
+#  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
+#  name = "terraform-test"
+#}
 
-resource "huaweicloud_cae_domain" "domain_create" {
-  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
-  name = "test.com"
-}
+#resource "huaweicloud_cae_domain" "domain_create" {
+#  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
+#  name = "test.com"
+#}
 
 resource "huaweicloud_cae_component" "component_create" {
   depends_on = [huaweicloud_cae_domain.domain_create] 
   environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
-  application_id = huaweicloud_cae_application.application_create.id
+  #application_id = huaweicloud_cae_application.application_create.id
+  application_id = "5cc74cdb-e264-4a63-885d-541ca27fbf56"
   deploy_after_create = true
 
   metadata {
@@ -87,5 +84,4 @@ resource "huaweicloud_cae_component" "component_create" {
       memory = "1Gi"
     }
   }
-  action = "configure"
 }
