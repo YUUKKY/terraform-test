@@ -42,18 +42,18 @@ locals {
 
 
 resource "huaweicloud_cae_application" "application_create" {
-  environment_id = "bf65121d-3bdd-49b0-9b0e-67b2381a2b86"
+  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
   name = "terraform-test"
 }
 
 resource "huaweicloud_cae_domain" "domain_create" {
-  environment_id = "bf65121d-3bdd-49b0-9b0e-67b2381a2b86"
+  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
   name = "test.com"
 }
 
 resource "huaweicloud_cae_component" "component_create" {
   depends_on = [huaweicloud_cae_domain.domain_create] 
-  environment_id = "bf65121d-3bdd-49b0-9b0e-67b2381a2b86"
+  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
   application_id = huaweicloud_cae_application.application_create.id
   deploy_after_create = true
 
