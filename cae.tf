@@ -52,7 +52,7 @@ resource "huaweicloud_cae_component" "component_create" {
   environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
   #application_id = huaweicloud_cae_application.application_create.id
   application_id = "5cc74cdb-e264-4a63-885d-541ca27fbf56"
-  deploy_after_create = true
+  #deploy_after_create = true
 
   metadata {
     name = "application"
