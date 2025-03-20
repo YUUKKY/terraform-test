@@ -86,7 +86,7 @@ resource "huaweicloud_cae_component" "component_create" {
   }
   action = "upgrade"
   lifecycle {
-     ignore_changes = ["spec"]
+     ignore_changes = ["spec", "configurations", "metadata", "action", "timeouts"]
   }
 }
 
