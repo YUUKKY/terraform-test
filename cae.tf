@@ -115,7 +115,7 @@ resource "huaweicloud_cae_component_action" "component_create" {
   })
 }
 
-#import {
-#  to = huaweicloud_cae_component.component_create
-#  id = "c48fa293-d513-4567-974a-01ca0ed2335f/5cc74cdb-e264-4a63-885d-541ca27fbf56/f79b5a94-4771-4afe-8c3e-c33d67a0d6dc"
-#}
+import {
+  to = huaweicloud_cae_component.component_create
+  id = "c48fa293-d513-4567-974a-01ca0ed2335f/5cc74cdb-e264-4a63-885d-541ca27fbf56/f79b5a94-4771-4afe-8c3e-c33d67a0d6dc"
+}
