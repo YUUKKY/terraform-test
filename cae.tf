@@ -84,5 +84,5 @@ resource "huaweicloud_cae_component" "component_create" {
       memory = "1Gi"
     }
   }
-  action = "deploy"
+  action = "upgrade"
 }
