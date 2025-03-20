@@ -114,3 +114,8 @@ resource "huaweicloud_cae_component_action" "component_create" {
     }
   })
 }
+
+import {
+  to = huaweicloud_cae_component.component_create
+  id = "f79b5a94-4771-4afe-8c3e-c33d67a0d6dc"
+}
