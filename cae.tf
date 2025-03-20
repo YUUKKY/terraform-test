@@ -1,4 +1,4 @@
-variable "cae-test" {default = "swr.me-east-1.myhuaweicloud.com/lw-demo/nginx:latest"}
+variable "cae-test" {default = "swr.me-east-1.myhuaweicloud.com/demo-cae/cae-frontend:1.0.0"}
 
 locals {  
   configurations = [
@@ -84,8 +84,33 @@ resource "huaweicloud_cae_component" "component_create" {
       memory = "1Gi"
     }
   }
-  #action = "upgrade"
+  action = "upgrade"
   lifecycle {
-     ignore_changes = ["action"]
+     ignore_changes = ["spec"]
   }
+}
+
+resource "huaweicloud_cae_component_action" "component_create" {
+  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
+  application_id = "5cc74cdb-e264-4a63-885d-541ca27fbf56"
+  component_id   = huaweicloud_cae_component.test.id
+
+  metadata {
+    name = "upgrade"
+
+    annotations = {
+      version = "1.0.0"
+    }
+  }
+
+  spec = jsonencode({
+    "source" : {
+      "type" : "image",
+      "url" : var.cae-test
+    },
+    "resource_limit" : {
+      "cpu_limit" : "500m",
+      "memory_limit" : "1Gi"
+    }
+  })
 }
