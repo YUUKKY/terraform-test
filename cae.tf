@@ -85,7 +85,7 @@ resource "huaweicloud_cae_component" "component_create" {
     }
   }
   #action = "upgrade"
-  lifecyle {
+  lifecycle {
      ignore_changes = ["action"]
   }
 }
