@@ -26,12 +26,14 @@ locals {
                 "hostname": "",
                 "paths": [
                 {
+                    "hostname" : "test.com",
                     "path": "/",
                     "url_match_mode": "STARTS_WITH"
                 }
                 ]
               }
-            ]
+            ],
+            "sni": [{"hostname": "test.com", "certificate": "test"}],
             }
           ]
         }
