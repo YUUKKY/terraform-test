@@ -36,23 +36,10 @@ locals {
   ]
 }
 
-
-#resource "huaweicloud_cae_application" "application_create" {
-#  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
-#  name = "terraform-test"
-#}
-
-#resource "huaweicloud_cae_domain" "domain_create" {
-#  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
-#  name = "test.com"
-#}
-
 resource "huaweicloud_cae_component" "component_create" {
-  #depends_on = [huaweicloud_cae_domain.domain_create] 
-  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
-  #application_id = huaweicloud_cae_application.application_create.id
-  application_id = "5cc74cdb-e264-4a63-885d-541ca27fbf56"
-  #deploy_after_create = true
+  environment_id = "f8df9907-4633-448f-8db5-918f8e433ee2"
+  application_id = "46c1bf1b-40b5-4354-a688-cbaff9beeb6d"
+  deploy_after_create = true
 
   metadata {
     name = "application"
@@ -85,33 +72,4 @@ resource "huaweicloud_cae_component" "component_create" {
     }
   }
   # action = "upgrade"
-  lifecycle {
-     ignore_changes = ["action"]
-  }
-}
-
-resource "huaweicloud_cae_component_action" "component_create" {
-  environment_id = "c48fa293-d513-4567-974a-01ca0ed2335f"
-  application_id = "5cc74cdb-e264-4a63-885d-541ca27fbf56"
-  component_id   = huaweicloud_cae_component.component_create.id
-
-  metadata {
-    name = "upgrade"
-
-    annotations = {
-      version = "1.0.0"
-    }
-  }
-
-  spec = jsonencode({
-    "source" : {
-      "type" : "image",
-      "url" : var.cae-test
-    },
-    "resource_limit" : {
-      "cpu_limit" : "500m",
-      "memory_limit" : "1Gi"
-    }
-  })
-  action="upgrade"
 }
