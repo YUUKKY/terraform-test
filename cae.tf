@@ -8,7 +8,7 @@ locals {
 	    "spec": {
           "items": [            
                {
-              "type": "LoadBalancer", # layer 7 HTTP
+              "type": "Ingress", # layer 7 HTTP
               "metadata": {
                 "annotations": {
                   "kubernetes.io/elb.health-check-flag": "on",
