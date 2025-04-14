@@ -16,19 +16,23 @@ locals {
                 }
               },
               "elb_id": "defaultElbID",
-"ports": [
-        {
-         "operator": "",
-         "uid": "b04d7e6f-3e55-4578-b0ec-c67e8d193300",
-         "ip": "",
-         "name": "",
-         "target_port": 80,
-         "port": 80,
-         "protocol": "TCP",
-         "default_certificate": ""
-        }
-       ],
-            }       
+              "ports": [
+              {
+                "port": 443,
+                "protocol": "HTTPS",
+                "default_certificate": "test1",
+                "policy": "tls-1-2-strict",
+                "target_port": 80,
+                "hostname": "",
+                "paths": [
+                {
+                    "path": "/",
+                    "url_match_mode": "STARTS_WITH"
+                }
+                ]
+              }
+            ]
+            }
           ]
         }
 	  }) 
