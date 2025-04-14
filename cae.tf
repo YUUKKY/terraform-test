@@ -34,6 +34,7 @@ locals {
               }
             ],
             "sni": [{"hostname": "test.com", "certificate": "test"}],
+            "default_certificate": "test1",
             }
           ]
         }
