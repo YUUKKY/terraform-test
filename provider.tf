@@ -4,7 +4,8 @@ terraform {
       source = "huaweicloud/huaweicloud"
       version = ">= 1.73.0"
     }
-  },
+  }
+
   backend "s3" {  
     bucket = "cae-riyadh-demo"
     key    = "cae-riyadh-demo/terraform.tfstate"  
