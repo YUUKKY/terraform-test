@@ -6,8 +6,8 @@ terraform {
     }
   },
   backend "s3" {  
-    bucket = "w30037381-inner-tr-west-1"
-    key    = "w30037381-inner-tr-west-1/terraform.tfstate"  
+    bucket = "cae-riyadh-demo"
+    key    = "cae-riyadh-demo/terraform.tfstate"  
     region = "me-east-1"      
     endpoint = "https://obs.me-east-1.myhuaweicloud.com"    
     
